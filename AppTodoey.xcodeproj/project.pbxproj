@@ -20,6 +20,8 @@
 		C5260AE32B9F81AB00BBB31A /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5260AE22B9F81AB00BBB31A /* Category.swift */; };
 		C5260AE52B9F81BA00BBB31A /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5260AE42B9F81BA00BBB31A /* Item.swift */; };
 		C5260AE82B9F934100BBB31A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5260AE72B9F934100BBB31A /* SceneDelegate.swift */; };
+		C5B4A95A2BA070E40000BC4B /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B4A9592BA070E40000BC4B /* NotesViewController.swift */; };
+		C5B4A95E2BA071880000BC4B /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5B4A95D2BA071880000BC4B /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +56,8 @@
 		C5260AE22B9F81AB00BBB31A /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		C5260AE42B9F81BA00BBB31A /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		C5260AE72B9F934100BBB31A /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C5B4A9592BA070E40000BC4B /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		C5B4A95D2BA071880000BC4B /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +126,7 @@
 			children = (
 				C5260ADA2B9F807500BBB31A /* CategoryViewController.swift */,
 				C5260ADC2B9F809D00BBB31A /* TodoListViewController.swift */,
+				C5B4A9592BA070E40000BC4B /* NotesViewController.swift */,
 				C5260ADE2B9F80B200BBB31A /* SwipeTableViewController.swift */,
 				C5260AE62B9F81BF00BBB31A /* Data Model */,
 			);
@@ -148,6 +153,7 @@
 			children = (
 				C5260AE22B9F81AB00BBB31A /* Category.swift */,
 				C5260AE42B9F81BA00BBB31A /* Item.swift */,
+				C5B4A95D2BA071880000BC4B /* Note.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -297,7 +303,9 @@
 				C5260AE32B9F81AB00BBB31A /* Category.swift in Sources */,
 				C5260A9D2B9F7DD700BBB31A /* AppDelegate.swift in Sources */,
 				C5260ADB2B9F807500BBB31A /* CategoryViewController.swift in Sources */,
+				C5B4A95E2BA071880000BC4B /* Note.swift in Sources */,
 				C5260AE52B9F81BA00BBB31A /* Item.swift in Sources */,
+				C5B4A95A2BA070E40000BC4B /* NotesViewController.swift in Sources */,
 				C5260ADF2B9F80B200BBB31A /* SwipeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

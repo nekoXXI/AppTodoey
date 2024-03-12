@@ -1,8 +1,7 @@
-//
-//  Note.swift
-//  AppTodoey
-//
-//  Created by Адиль on 12/3/24.
-//
-
 import Foundation
+import RealmSwift
+
+final class Note: Object {
+    @objc dynamic var textNote: String = ""
+    var parentItem = LinkingObjects(fromType: Item.self, property: "notes")
+}

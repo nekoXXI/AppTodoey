@@ -40,6 +40,9 @@ final class TodoListViewController: SwipeTableViewController {
                     // realm.delete(item)
                     item.done = !item.done
                 }
+                let destinationVC = NotesViewController()
+                destinationVC.selectedItems = item
+                navigationController?.pushViewController(destinationVC, animated: true)
             }
         }
         tableView.reloadData()
