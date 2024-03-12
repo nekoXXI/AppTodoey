@@ -2,15 +2,24 @@ import UIKit
 import SwipeCellKit
 import RealmSwift
 
+struct Constants {
+    static let swipeCellReuseID = "Cell"
+    static let goToItemsSegue = "goToItems"
+}
+
 final class CategoryViewController: SwipeTableViewController {
-    private let realm = try! Realm()
+    
     private var categories: Results<Category>?
+    private var realm: Realm {
+        do {
+            return try! Realm()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         loadCategories()
-        tableView.separatorStyle = .none
-        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: Constants.swipeCellReuseID)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -51,9 +60,11 @@ final class CategoryViewController: SwipeTableViewController {
         var textField = UITextField()
         let alert = UIAlertController(title: "Add a New Cateogry", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
-            let newCategory = Category()
-            newCategory.name = textField.text!
-            self.save(category: newCategory)
+            if textField.text?.count != 0 {
+                let newCategory = Category()
+                newCategory.name = textField.text!
+                self.save(category: newCategory)
+            }
         }
         alert.addAction(action)
         alert.addTextField { (field) in
@@ -64,7 +75,7 @@ final class CategoryViewController: SwipeTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToItems", sender: self)
+        performSegue(withIdentifier: Constants.goToItemsSegue, sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

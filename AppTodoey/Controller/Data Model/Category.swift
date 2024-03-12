@@ -6,4 +6,3 @@ final class Category: Object {
     @objc dynamic var colour: String = ""
     let items = List<Item>()
 }
-

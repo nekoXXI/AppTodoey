@@ -14,8 +14,7 @@ final class TodoListViewController: SwipeTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.separatorStyle = .none
-        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(SwipeTableViewCell.self, forCellReuseIdentifier: Constants.swipeCellReuseID)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -26,7 +25,6 @@ final class TodoListViewController: SwipeTableViewController {
         let cell = super.tableView(tableView, cellForRowAt: indexPath)
         if let item = toDoItems?[indexPath.row] {
             cell.textLabel?.text = item.title
-            cell.accessoryType = item.done ? .checkmark : .none
         } else {
             cell.textLabel?.text = "No Items Added"
         }
@@ -37,7 +35,6 @@ final class TodoListViewController: SwipeTableViewController {
         if let item = toDoItems?[indexPath.row] {
             do {
                 try! realm.write{
-                    // realm.delete(item)
                     item.done = !item.done
                 }
                 let destinationVC = NotesViewController()
@@ -54,12 +51,14 @@ final class TodoListViewController: SwipeTableViewController {
         let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
         let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
             if let currentCategory = self.selectedCategory {
-                do {
-                    try! self.realm.write {
-                        let newItem = Item()
-                        newItem.title = textField.text!
-                        newItem.dateCreated = Date()
-                        currentCategory.items.append(newItem)
+                if !textField.text.isNilOrEmpty {
+                    do {
+                        try! self.realm.write {
+                            let newItem = Item()
+                            newItem.title = textField.text!
+                            newItem.dateCreated = Date()
+                            currentCategory.items.append(newItem)
+                        }
                     }
                 }
             }
@@ -81,7 +80,7 @@ final class TodoListViewController: SwipeTableViewController {
     override func updateModel(at indexPath: IndexPath) {
         if let item = toDoItems?[indexPath.row] {
             do {
-                try! realm.write{
+                try! realm.write {
                     realm.delete(item)
                 }
             }
@@ -105,5 +104,5 @@ extension TodoListViewController: UISearchBarDelegate{
             toDoItems = toDoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
             tableView.reloadData()
         }
-    }    
+    }
 }
