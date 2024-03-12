@@ -62,8 +62,10 @@ final class CategoryViewController: SwipeTableViewController {
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             if textField.text?.count != 0 {
                 let newCategory = Category()
-                newCategory.name = textField.text!
-                self.save(category: newCategory)
+                if !textField.text!.trimmingCharacters(in: .whitespaces).isEmpty {
+                    newCategory.name = textField.text!
+                    self.save(category: newCategory)
+                }
             }
         }
         alert.addAction(action)

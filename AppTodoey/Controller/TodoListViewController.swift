@@ -55,9 +55,11 @@ final class TodoListViewController: SwipeTableViewController {
                     do {
                         try! self.realm.write {
                             let newItem = Item()
-                            newItem.title = textField.text!
-                            newItem.dateCreated = Date()
-                            currentCategory.items.append(newItem)
+                            if !textField.text!.trimmingCharacters(in: .whitespaces).isEmpty{
+                                newItem.title = textField.text!
+                                newItem.dateCreated = Date()
+                                currentCategory.items.append(newItem)
+                            }
                         }
                     }
                 }
